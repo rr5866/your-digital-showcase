@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Sparkles, ExternalLink, Mail, Github, Linkedin, Instagram } from "lucide-react";
 import heroImg from "../assets/hero-dev.png";
 
@@ -21,15 +22,50 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const techs = ["React", "JavaScript", "Node.js", "PostgreSQL"];
+const techs = ["React", "Javascript", "Node.js", "PostgreSQL"];
+const roles = ["Computer Science", "Engineering Student", "Tech Enthusiast"];
+
+function useTypewriter(words: string[], speed = 90, pause = 1600) {
+  const [text, setText] = useState("");
+  const [wordIdx, setWordIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const word = words[wordIdx];
+    const timeout = setTimeout(
+      () => {
+        if (!deleting) {
+          if (text.length < word.length) {
+            setText(word.slice(0, text.length + 1));
+          } else {
+            setTimeout(() => setDeleting(true), pause);
+          }
+        } else {
+          if (text.length > 0) {
+            setText(word.slice(0, text.length - 1));
+          } else {
+            setDeleting(false);
+            setWordIdx((i) => (i + 1) % words.length);
+          }
+        }
+      },
+      deleting ? speed / 2 : speed,
+    );
+    return () => clearTimeout(timeout);
+  }, [text, deleting, wordIdx, words, speed, pause]);
+
+  return text;
+}
 
 function HomePage() {
+  const typed = useTypewriter(roles);
+
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden min-h-[calc(100vh-4rem)]">
       <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
       <div className="absolute inset-0 hero-glow pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-7">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm">
             <Sparkles size={14} />
@@ -42,7 +78,10 @@ function HomePage() {
             <span className="gradient-text">Developer</span>
           </h1>
 
-          <p className="text-lg text-foreground/90 font-medium">Computer Science &amp; Engineering</p>
+          <p className="text-xl md:text-2xl text-foreground/90 font-medium h-8">
+            <span>{typed}</span>
+            <span className="inline-block w-0.5 h-6 bg-primary ml-1 align-middle animate-pulse" />
+          </p>
 
           <p className="text-muted-foreground text-base md:text-lg max-w-lg">
             Enhancing digital experiences that are smooth, scalable, and made to impress.
@@ -76,9 +115,9 @@ function HomePage() {
 
           <div className="flex items-center gap-3 pt-4">
             {[
-              { icon: Github, href: "https://github.com/", label: "GitHub" },
+              { icon: Github, href: "https://github.com/AbhishekGanvir", label: "GitHub" },
               { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-              { icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
+              { icon: Instagram, href: "https://instagram.com/alright.abhi", label: "Instagram" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -103,26 +142,6 @@ function HomePage() {
             height={1024}
             className="relative w-full max-w-lg animate-float drop-shadow-[0_20px_50px_oklch(0.68_0.22_295/0.4)]"
           />
-        </div>
-      </div>
-
-      {/* Stats */}
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pb-20">
-        <div className="grid sm:grid-cols-3 gap-5">
-          {[
-            { value: "4", label: "Total Projects", desc: "Innovative web & mobile solutions crafted" },
-            { value: "3", label: "Certificates", desc: "Professional skills validated" },
-            { value: "3", label: "Years of Experience", desc: "Continuous learning journey" },
-          ].map((s) => (
-            <div
-              key={s.label}
-              className="gradient-card border border-border rounded-2xl p-6 backdrop-blur transition-smooth hover:border-primary/40 hover:-translate-y-1"
-            >
-              <div className="text-4xl font-bold gradient-text">{s.value}</div>
-              <div className="mt-2 font-semibold text-foreground">{s.label}</div>
-              <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
