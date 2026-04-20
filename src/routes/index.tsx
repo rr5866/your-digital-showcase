@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Sparkles, ExternalLink, Mail, Github, Linkedin, Instagram } from "lucide-react";
-import heroImg from "../assets/hero-dev.png";
+import { InteractiveTerminal } from "../components/InteractiveTerminal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -135,13 +135,7 @@ function HomePage() {
 
         <div className="relative flex justify-center lg:justify-end">
           <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
-          <img
-            src={heroImg}
-            alt="Developer workstation illustration"
-            width={1024}
-            height={1024}
-            className="relative w-full max-w-lg animate-float drop-shadow-[0_20px_50px_oklch(0.68_0.22_295/0.4)]"
-          />
+          <InteractiveTerminal />
         </div>
       </div>
     </section>
