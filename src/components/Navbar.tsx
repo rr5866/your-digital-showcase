@@ -6,7 +6,7 @@ const links = [
   { to: "/" as const, label: "Home" },
   { to: "/about" as const, label: "About" },
   { to: "/experience" as const, label: "Experience" },
-  { to: "/portfolio" as const, label: "Portfolio" },
+  { to: "/portfolio" as const, label: "Portofolio" },
   { to: "/contact" as const, label: "Contact" },
 ];
 
@@ -14,7 +14,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border/50">
+    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/40">
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         <Link to="/" className="text-xl font-bold gradient-text tracking-tight">
           Abhishek Ganvir
@@ -25,8 +25,8 @@ export function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className="text-sm text-muted-foreground hover:text-foreground transition-smooth relative"
-              activeProps={{ className: "text-primary font-medium" }}
+              className="text-sm text-muted-foreground hover:text-foreground transition-smooth"
+              activeProps={{ className: "text-primary font-medium border-b-2 border-primary pb-1" }}
               activeOptions={{ exact: true }}
             >
               {l.label}
@@ -44,7 +44,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl">
           <div className="px-6 py-4 flex flex-col gap-4">
             {links.map((l) => (
               <Link
