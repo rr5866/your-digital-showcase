@@ -223,7 +223,7 @@ export function InteractiveTerminal() {
         ref={scrollRef}
         className="relative h-[420px] overflow-y-auto px-4 py-4 font-mono text-[13px] leading-relaxed"
       >
-        {lines.map((line, idx) => (
+        {safeLines.map((line, idx) => (
           <div key={idx} className={`whitespace-pre-wrap ${colorFor(line.type)}`}>
             {line.text || "\u00A0"}
           </div>

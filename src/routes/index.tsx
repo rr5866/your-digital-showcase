@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Sparkles, ExternalLink, Mail, Github, Linkedin, Instagram } from "lucide-react";
+import { Sparkles, ExternalLink, Mail, Github, Linkedin, Instagram, Code2, Rocket, Coffee, Zap } from "lucide-react";
 import { InteractiveTerminal } from "../components/InteractiveTerminal";
 
 export const Route = createFileRoute("/")({
@@ -22,7 +22,12 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const techs = ["React", "Javascript", "Node.js", "PostgreSQL"];
+const highlights = [
+  { icon: Code2, label: "20+ Projects", sub: "shipped" },
+  { icon: Rocket, label: "3+ Years", sub: "building" },
+  { icon: Zap, label: "Full Stack", sub: "end-to-end" },
+  { icon: Coffee, label: "∞ Coffee", sub: "fueled" },
+];
 const roles = ["Computer Science", "Engineering Student", "Tech Enthusiast"];
 
 function useTypewriter(words: string[], speed = 90, pause = 1600) {
@@ -87,14 +92,16 @@ function HomePage() {
             Enhancing digital experiences that are smooth, scalable, and made to impress.
           </p>
 
-          <div className="flex flex-wrap gap-2">
-            {techs.map((t) => (
-              <span
-                key={t}
-                className="px-4 py-1.5 rounded-full border border-border bg-card/60 text-sm text-foreground/80 backdrop-blur"
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg">
+            {highlights.map(({ icon: Icon, label, sub }) => (
+              <div
+                key={label}
+                className="flex flex-col items-start gap-1 px-4 py-3 rounded-xl border border-border bg-card/60 backdrop-blur transition-smooth hover:border-primary/50 hover:-translate-y-0.5"
               >
-                {t}
-              </span>
+                <Icon size={18} className="text-primary" />
+                <span className="text-sm font-semibold text-foreground leading-tight">{label}</span>
+                <span className="text-xs text-muted-foreground leading-tight">{sub}</span>
+              </div>
             ))}
           </div>
 
