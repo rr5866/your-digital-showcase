@@ -100,15 +100,19 @@ export function InteractiveTerminal() {
   useEffect(() => {
     let cancelled = false;
     let i = 0;
+    setLines([]);
     const tick = () => {
       if (cancelled) return;
-      if (i < BOOT_SEQUENCE.length) {
-        setLines((prev) => [...prev, BOOT_SEQUENCE[i]]);
-        i += 1;
-        setTimeout(tick, 280);
-      } else {
+      if (i >= BOOT_SEQUENCE.length) {
         setBooting(false);
+        return;
       }
+      const nextLine = BOOT_SEQUENCE[i];
+      i += 1;
+      if (nextLine) {
+        setLines((prev) => [...prev, nextLine]);
+      }
+      setTimeout(tick, 280);
     };
     const start = setTimeout(tick, 400);
     return () => {
@@ -116,6 +120,9 @@ export function InteractiveTerminal() {
       clearTimeout(start);
     };
   }, []);
+
+  // Defensive filter — never render undefined entries
+  const safeLines = lines.filter((l): l is Line => Boolean(l && l.type));
 
   // Auto-scroll on new lines
   useEffect(() => {
