@@ -168,7 +168,7 @@ function ContactPage() {
             setTimeout(() => setSent(false), 3000);
             (e.target as HTMLFormElement).reset();
           }}
-          className="rounded-2xl gradient-card border border-border p-7 md:p-8 glow-sm space-y-5"
+          className="rounded-3xl gradient-card border border-border p-8 md:p-10 glow-sm space-y-5 h-full flex flex-col"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
             Send a Message
