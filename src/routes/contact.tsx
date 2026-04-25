@@ -234,7 +234,7 @@ function ContactPage() {
 
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 gradient-primary text-primary-foreground px-6 py-3.5 rounded-xl font-semibold transition-smooth hover:opacity-90 glow-sm"
+            className="mt-auto w-full inline-flex items-center justify-center gap-2 gradient-primary text-primary-foreground px-6 py-3.5 rounded-xl font-semibold transition-smooth hover:opacity-90 glow-sm"
           >
             <Send size={16} />
             {sent ? "Message Sent ✓" : "Send Message"}
