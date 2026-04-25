@@ -66,10 +66,22 @@ function ContactPage() {
         {/* LEFT — Get In Touch */}
         <div className="space-y-8">
           <div className="relative rounded-3xl gradient-card border border-border p-8 md:p-10 glow-sm overflow-hidden">
-            {/* Decorative blob */}
+            {/* Decorative blobs */}
             <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl pointer-events-none" />
 
-            <h3 className="relative text-4xl md:text-5xl font-bold gradient-text mb-3">
+            {/* Status pill — TOP */}
+            <div className="relative inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
+              </span>
+              <span className="text-xs font-medium text-foreground tracking-wide">
+                Available for new opportunities
+              </span>
+            </div>
+
+            <h3 className="relative text-4xl md:text-5xl font-bold gradient-text mb-3 leading-tight">
               Get In Touch
             </h3>
             <p className="relative text-muted-foreground mb-8 max-w-md">
@@ -77,58 +89,50 @@ function ContactPage() {
               opportunities to be part of your visions.
             </p>
 
-            <div className="relative space-y-5">
-              <div className="flex items-center gap-4 p-3 rounded-xl border border-border bg-card/40 hover:border-primary/50 transition-smooth group">
-                <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 transition-smooth">
+            <div className="relative space-y-3">
+              <a
+                href="mailto:hello@abhishekganvir.dev"
+                className="flex items-center gap-4 p-4 rounded-2xl border border-border bg-card/40 hover:border-primary/50 hover:bg-card/60 transition-smooth group"
+              >
+                <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 group-hover:scale-105 transition-smooth shrink-0">
                   <Mail size={20} />
                 </div>
-                <div className="min-w-0">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Email</p>
-                  <a
-                    href="mailto:hello@abhishekganvir.dev"
-                    className="font-semibold text-foreground hover:text-primary transition-smooth truncate block"
-                  >
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Email</p>
+                  <p className="font-semibold text-foreground group-hover:text-primary transition-smooth truncate">
                     hello@abhishekganvir.dev
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-3 rounded-xl border border-border bg-card/40 hover:border-primary/50 transition-smooth group">
-                <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 transition-smooth">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">Location</p>
-                  <p className="font-semibold text-foreground">Maharashtra, India</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 p-3 rounded-xl border border-border bg-card/40 hover:border-primary/50 transition-smooth group">
-                <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 transition-smooth">
-                  <Clock size={20} />
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Response Time
                   </p>
-                  <p className="font-semibold text-foreground">Within 24 hours</p>
                 </div>
-              </div>
-            </div>
+              </a>
 
-            {/* Status — bigger, more prominent */}
-            <div className="relative mt-8 flex items-center gap-3 px-5 py-4 rounded-2xl border border-primary/30 bg-primary/10">
-              <span className="relative flex h-3 w-3 shrink-0">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary" />
-              </span>
-              <div>
-                <p className="text-base md:text-lg font-semibold text-foreground leading-tight">
-                  Available for new opportunities
-                </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  Currently accepting freelance & full-time roles
-                </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-3 p-4 rounded-2xl border border-border bg-card/40 hover:border-primary/50 transition-smooth group">
+                  <div className="h-10 w-10 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 transition-smooth shrink-0">
+                    <MapPin size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                      Location
+                    </p>
+                    <p className="font-semibold text-foreground text-sm truncate">
+                      Maharashtra, IN
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-4 rounded-2xl border border-border bg-card/40 hover:border-primary/50 transition-smooth group">
+                  <div className="h-10 w-10 rounded-xl flex items-center justify-center bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary/20 transition-smooth shrink-0">
+                    <Clock size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                      Replies in
+                    </p>
+                    <p className="font-semibold text-foreground text-sm truncate">
+                      ~24 hours
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
