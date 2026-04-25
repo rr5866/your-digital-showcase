@@ -62,10 +62,10 @@ function ContactPage() {
       </div>
 
       {/* Two column */}
-      <div className="relative mt-16 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+      <div className="relative mt-16 grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
         {/* LEFT — Get In Touch */}
-        <div className="space-y-8">
-          <div className="relative rounded-3xl gradient-card border border-border p-8 md:p-10 glow-sm overflow-hidden">
+        <div className="flex flex-col gap-8 h-full">
+          <div className="relative rounded-3xl gradient-card border border-border p-8 md:p-10 glow-sm overflow-hidden flex-1 flex flex-col">
             {/* Decorative blobs */}
             <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
             <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl pointer-events-none" />
@@ -168,7 +168,7 @@ function ContactPage() {
             setTimeout(() => setSent(false), 3000);
             (e.target as HTMLFormElement).reset();
           }}
-          className="rounded-2xl gradient-card border border-border p-7 md:p-8 glow-sm space-y-5"
+          className="rounded-3xl gradient-card border border-border p-8 md:p-10 glow-sm space-y-5 h-full flex flex-col"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
             Send a Message
@@ -234,7 +234,7 @@ function ContactPage() {
 
           <button
             type="submit"
-            className="w-full inline-flex items-center justify-center gap-2 gradient-primary text-primary-foreground px-6 py-3.5 rounded-xl font-semibold transition-smooth hover:opacity-90 glow-sm"
+            className="mt-auto w-full inline-flex items-center justify-center gap-2 gradient-primary text-primary-foreground px-6 py-3.5 rounded-xl font-semibold transition-smooth hover:opacity-90 glow-sm"
           >
             <Send size={16} />
             {sent ? "Message Sent ✓" : "Send Message"}
